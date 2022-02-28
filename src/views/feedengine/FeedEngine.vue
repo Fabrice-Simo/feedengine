@@ -1,10 +1,22 @@
 <template>
   <div class="test">
     <h1 style="color: gray">{{ msg }}</h1>
-    <fe-button @mbOnClick="greet">add album</fe-button>
     <div class="fe-container">
-      <div class="fe-album-list"><h1>Just a</h1></div>
-      <div class="fe-photo-list"><h1>quick test</h1></div>
+      <!-- album list -->
+      <fe-list type="album" size="large" :itemList="albumList">
+        <template #button>
+          <fe-button @mbOnClick="addAlbum">add album</fe-button>
+        </template>
+        <template #info="{ item }">
+          <div class="fe-list-item__info">{{ item.photoCount }}</div>
+        </template>
+      </fe-list>
+      <!-- photo list -->
+      <fe-list type="photo" size="small" :itemList="photoList">
+        <template #button>
+          <fe-button @mbOnClick="addPhoto">add photo</fe-button>
+        </template>
+      </fe-list>
     </div>
   </div>
 </template>
@@ -14,17 +26,23 @@ import { jsPlumb } from "jsplumb";
 import * as mockData from "@/mockData";
 
 import Button from "@/components/Button";
+import List from "@/components/List";
 
 export default {
   name: "FeedEngine",
   components: {
     "fe-button": Button,
+    "fe-list": List,
   },
   props: {
     msg: String,
   },
   data() {
-    return {};
+    return {
+      albumList: mockData.albumList,
+      photoList: mockData.photoList,
+      connectionList: mockData.connectionList,
+    };
   },
   mounted() {
     console.log(jsPlumb);
@@ -49,6 +67,7 @@ export default {
   border-radius: var(--fe-medium-spacing);
   color: var(--fe-accent);
   width: var(--fe-half-width);
+  min-height: calc(var(--fe-large-fix-spacing) * 6);
 
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: var(--fe-primary);
@@ -63,13 +82,12 @@ export default {
   grid-template-areas: "fe-album-list fe-album-list . . . . fe-photo-list  fe-photo-list";
 }
 
-.fe-album-list {
-  grid-area: fe-album-list;
-  background-color: red;
-}
-
-.fe-photo-list {
-  grid-area: fe-photo-list;
-  background-color: green;
+.fe-list-item__info {
+  min-width: var(--fe-large-fix-spacing);
+  max-height: var(--fe-large-fix-spacing);
+  border-radius: var(--fe-large-fix-spacing);
+  color: var(--fe-action-text);
+  background-color: var(--fe-secondary-dark);
+  line-height: var(--fe-large-fix-spacing);
 }
 </style>
