@@ -176,6 +176,40 @@ export default {
         return acc;
       }, 0);
     },
+
+    addAlbum() {
+      console.log("dragDropConn > methods > addAlbum");
+
+      let album = {
+        name: "New Album",
+        photoCount: 0,
+        uuid: this.generateUIID(8),
+      };
+      this.albumList.push(album);
+      // nextTick lets us provide a callback to excecute when Vue
+      // is done progating new changes to the DOM and completing
+      // rendering
+      this.$nextTick(() => {
+        this.domElementToTarget(album.uuid);
+      });
+    },
+
+    addPhoto() {
+      console.log("dragDropConn > methods > addPhoto");
+
+      let photo = { name: "New Photo", uuid: this.generateUIID(8) };
+      this.photoList.push(photo);
+
+      this.$nextTick(() => {
+        this.domElementToSource(photo.uuid);
+      });
+    },
+
+    generateUIID(length) {
+      return Number(
+        Math.random().toString().substring(4, length) + Date.now()
+      ).toString(36);
+    },
   },
 };
 </script>
