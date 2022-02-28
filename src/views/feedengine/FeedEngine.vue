@@ -5,10 +5,19 @@
 </template>
 
 <script>
+import { jsPlumb } from "jsplumb";
+import * as mockData from "@/mockData";
 export default {
   name: "FeedEngine",
   props: {
     msg: String,
+  },
+  data() {
+    return {};
+  },
+  mounted() {
+    console.log(jsPlumb);
+    console.log(mockData);
   },
 };
 </script>
