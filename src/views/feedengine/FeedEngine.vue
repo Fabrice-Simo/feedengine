@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="test">
     <h1 style="color: gray">{{ msg }}</h1>
   </div>
 </template>
@@ -24,4 +24,8 @@ export default {
 
 
 <style scoped>
+@import url("@/styleGuide/index.css");
+.test {
+  background-color: var(--fe-primary);
+}
 </style>

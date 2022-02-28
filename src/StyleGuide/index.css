@@ -1,0 +1,31 @@
+:root{
+    /* color guide */
+    --fe-primary: #f6f2e2;
+    --fe-primary-ligth: #ffcd05;
+    --fe-secondary: #D3F02F;
+    --fe-secondary-dark: #556500;
+    --fe-accent: #BEE8FF; 
+    --fe-accent-text: #006688; 
+    --fe-action-hover: #006688;
+    --fe-action-text: #f2f2f2;
+
+    /* spacing guide */
+    --fe-base-spacing: 1rem;
+    --fe-small-spacing: calc(2*var(--fe-base-spacing));
+    --fe-medium-spacing: calc(4*var(--fe-base-spacing));
+    
+    --fe-base-fix-spacing: 2px;
+    --fe-xsmall-fix-spacing:calc(2*var(--fe-base-fix-spacing));
+    --fe-small-fix-spacing:calc(4*var(--fe-base-fix-spacing));
+    --fe-medium-fix-spacing: calc(10*var(--fe-base-fix-spacing));
+    --fe-large-fix-spacing: calc(20*var(--fe-base-fix-spacing));
+
+    --fe-full-width: 100%;
+    --fe-half-width: 50%;
+
+    /* typography guide */
+    --fe-base-font-size: 2ch;
+
+    /* effect guide */
+    --fe-base-transition: 200ms;
+}
